@@ -35,7 +35,7 @@ XGBoost is a scalable and efficient gradient boosting library that is widely use
 
 LightGBM is a gradient boosting framework developed by Microsoft that focuses on leaf-wise tree growth and gradient-based learning. It is known for its high efficiency and performance.
 
-\i em CatBoost
+\item Em CatBoost
 CatBoost is a gradient boosting library developed by Yandex that is designed to handle categorical features automatically. It is known for its robustness and ability to work with heterogeneous data
 \end{itemize}
 
@@ -150,4 +150,19 @@ LightGBM, renowned for its training speed, memory efficiency, and proficiency wi
 CatBoost, tailored for categorical features and imbalanced data, emerged as the preferred option for datasets characterized by categorical dominance and class imbalances, as well as projects seeking
 efficient default settings and enhanced interpretability.
 
+\section {Experiments Design}
+\begin{itemize}
+\item Data Collection:
+A dataset consisting of meteorological and other relevant variables from the northeast region of Portugal was collected for training and evaluating the models. This dataset includes features such as
+temperature, humidity, wind speed, and precipitation, along with historical records of forest fire occurrences.
 
+\item Model Training and Evaluation:
+The collected data was split into training and testing sets for model training and evaluation respectively. Cross-validation techniques such as k-fold cross-validation were employed to assess
+the models' performance robustly. Various metrics including mean squared error (MSE), root mean squared error (RMSE), and R-squared score (R2) were used to evaluate the models' performance.
+
+\item Feature Importance Analysis:
+The importance of features in predicting the target variable (area or skewed area) was analyzed using techniques such as permutation importance or feature importance scores provided by the models. This analysis helps in identifying the most influential features for predicting forest fire area.
+
+\item Comparison of Top Dependable Variables vs. All Variables:
+The performance of the models using only the top 5 dependable columns versus using all columns was compared to assess the impact of feature selection on prediction accuracy.
+\end{itemize}
