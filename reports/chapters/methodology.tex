@@ -39,6 +39,7 @@ LightGBM is a gradient boosting framework developed by Microsoft that focuses on
 CatBoost is a gradient boosting library developed by Yandex that is designed to handle categorical features automatically. It is known for its robustness and ability to work with heterogeneous data
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Tables}
 Data types of each column in the DataFrame df \\
@@ -104,6 +105,8 @@ plt.ylabel('Average Target')
 plt.show()
 \end{lstlisting}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \clearpage
 First 10 rows of Data frame
 \begin{table}[ht!]
@@ -119,25 +122,9 @@ First 10 rows of Data frame
     \centering
     \includegraphics[scale=1.0]{figures/output_14_0.png}
     \caption{Histogram representation of Target column and Frequency.}
-    \label{fig:example-01}
-\end{figure}
-\clearpage
-Histograms for each column in the DataFrame using a specified layout
-\begin{figure}[ht]
-    \centering
-    \includegraphics[scale=1.0]{figures/output_16_1.png}
-    \caption{Histograms for each column in the DataFrame using a specified layout.}
-    \label{fig:example-01}
 \end{figure}
 
-\clearpage
-Bar plot showing the average target value for each month
-\begin{figure}[ht]
-    \centering
-    \includegraphics[scale=1.0]{figures/output_18_0.png}
-    \caption{Bar plot showing the average target value for each month.}
-    \label{fig:example-01}
-\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 \section {Implementation}
@@ -150,11 +137,21 @@ LightGBM, renowned for its training speed, memory efficiency, and proficiency wi
 CatBoost, tailored for categorical features and imbalanced data, emerged as the preferred option for datasets characterized by categorical dominance and class imbalances, as well as projects seeking
 efficient default settings and enhanced interpretability.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section {Experiments Design}
 \begin{itemize}
 \item Data Collection:
 A dataset consisting of meteorological and other relevant variables from the northeast region of Portugal was collected for training and evaluating the models. This dataset includes features such as
 temperature, humidity, wind speed, and precipitation, along with historical records of forest fire occurrences.
+
+\section{Figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.5]{figures/Statistical Summary.jpg}
+    \caption{Table 2: Statistical Summary of Variables and
+    Forest Fire Volume : This table displays statistical measures for variables X, Y, and meteorological factors (FFMC, DMC, DC, ISI, temperature, relative humidity, wind, and rain), along with the forest fire volume target variable. Measures include count, mean, standard deviation, minimum, 25th percentile, median, 75th percentile, and maximum values for each variable}
+\end{figure}
 
 \item Model Training and Evaluation:
 The collected data was split into training and testing sets for model training and evaluation respectively. Cross-validation techniques such as k-fold cross-validation were employed to assess
@@ -163,9 +160,19 @@ the models' performance robustly. Various metrics including mean squared error (
 \item Feature Importance Analysis:
 The importance of features in predicting the target variable (area or skewed area) was analyzed using techniques such as permutation importance or feature importance scores provided by the models. This analysis helps in identifying the most influential features for predicting forest fire area.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.5]{figures/Feature Ranking.jpg}
+    \caption{Feature Importance Ranking : This diagram illustrates the ranking of feature importance from most important to least important. The top five features, in descending order of importance, are temperature (temp), spatial coordinate X, DC index, ISI index, and FFMC index.}
+\end{figure}
+
 \item Comparison of Top Dependable Variables vs. All Variables:
 The performance of the models using only the top 5 dependable columns versus using all columns was compared to assess the impact of feature selection on prediction accuracy.
 \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section {Summary}
 In this methodology, we described the algorithms employed in our study, including traditional regression algorithms and gradient boosting algorithms. These algorithms were implemented using Python, and experiments were conducted on a dataset from Portugal to predict forest fire occurrences. The models were trained and evaluated using appropriate techniques, and the results were analyzed to provide insights into the effectiveness of the prediction methodologies. Additionally, feature importance analysis was performed to identify the most significant predictors of forest fire area. Comparison between top 5 dependable columns and all columns is conducted to understand the impact of feature selection on model performance.
