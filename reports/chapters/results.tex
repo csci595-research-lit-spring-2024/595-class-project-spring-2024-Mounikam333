@@ -1,59 +1,103 @@
-\chapter{Results}
+\chapter{Results and Analysis}
 \label{ch:results}
-The results chapter tells a reader about your findings based on the methodology you have used to solve the investigated problem. For example: 
+\section{Performance Evaluation of Regression Models}
+In this comprehensive analysis, we delve into the performance metrics of various regression models for predicting forest fire occurrences. Two distinct test sizes, 0.1 and 0.2, were considered to assess the models under different scenarios. Moreover, a series of preprocessing techniques were applied to the dataset before model training, aiming to enhance predictive accuracy.
+
+\textbf{Test Size 0.1: Initial Insights}
+At a test size of 0.1, the following models were evaluated:
 \begin{itemize}
-    \item If your project aims to develop a software/web application, the results may be the developed software/system/performance of the system, etc., obtained using a relevant methodological approach in software engineering. 
-    
-    \item If your project aims to implement an algorithm for its analysis, the results may be the performance of the algorithm obtained using a relevant experiment design. 
-    
-    \item If your project aims to solve some problems/research questions over a collected dataset, the results may be the findings obtained using the applied tools/algorithms/etc. 
-\end{itemize}
-Arrange your results and findings in a logical sequence. 
+ \item \textbf{Linear Regression}: Despite its simplicity, the linear regression model achieved a moderate performance, with an MSE of 553.83 and an R2Score of 0.056.
 
+ \item \textbf{XGBoost Regressor}: XGBoost, a popular gradient boosting algorithm, exhibited comparable results to linear regression, with an MSE of 559.21 and an R2Score of 0.047.
 
+ \item \textbf{CatBoost Regressor}: The CatBoost algorithm, known for its robustness to categorical variables, yielded a slightly higher MSE of 599.77 and a negative R2Score of -0.022.
 
-\section{A section}
+ \item \textbf{LightGBM Regressor}: LightGBM, another gradient boosting framework, showed the highest MSE of 919.30 and the lowest R2Score of -0.566 among the models evaluated.
 
-...
+ \item \textbf{Random Forest}: Employing a random forest model with default hyperparameters resulted in an MSE of 2.60 and a negative R2Score of -0.068.
 
-\clearpage
-\section{Example of a Table in \LaTeX}
-Table~\ref{tab:_ex_tab} is an example of a table created using the package \LaTeX  ``booktabs.'' do check the link: \href{https://en.wikibooks.org/wiki/LaTeX/Tables}{wikibooks.org/wiki/LaTeX/Tables} for more details. A table should be clean and readable. Unnecessary horizontal lines and vertical lines in tables make them unreadable and messy. The example in Table~\ref{tab:_ex_tab} uses a minimum number of liens (only necessary ones). Make sure that the top rule and bottom rule (top and bottom horizontal lines) of a table are present. 
+ \item \textbf{Decision Tree}: The decision tree model, with specified hyperparameters, attained an MSE of 3.36 and a negative R2Score of -0.383.
 
-\begin{table}[h!]
-    \centering
-    \caption{Example of a table in \LaTeX}
-    \label{tab:_ex_tab}
-    \begin{tabular}{llr}     
-        \toprule
-        \multicolumn{2}{c}{Bike} \\
-        \cmidrule(r){1-2}
-        Type    &  Color & Price (\pounds) \\
-        \midrule
-        Electric    & black   & 700   \\
-        Hybrid      & blue    & 500   \\
-        Road        & blue    & 300   \\
-        Mountain    & red     & 300   \\
-        Folding     & black   & 500   \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-\section{Example of captions style}
-
+ \item  \textbf{Tree}: Utilizing an extra tree regressor with preset hyperparameters yielded an MSE of 2.57 and a negative R2Score of -0.059.
+ \end{itemize}
+ 
+\textbf{Test Size 0.2: Detailed Examination}
+Expanding the test size to 0.2 allowed for a more detailed examination of model performance, especially after preprocessing. The results for this configuration are as follows:
 \begin{itemize}
-    \item The \textbf{caption of a Figure (artwork) goes below} the artwork (Figure/Graphics/illustration). See example artwork in Figure~\ref{fig:chart_a}. 
-    \item  The \textbf{caption of a Table goes above} the table. See the example in Table~\ref{tab:_ex_tab}.
-    \item  The \textbf{caption of an Algorithm goes above} the algorithm. See the example in Algorithm~\ref{algo:algo_example}.
-    \item The \textbf{caption of a Listing goes below} the Listing  (Code snippet). See example listing in Listing~\ref{list:python_code_ex}. 
+\item \textbf{Linear Regression}: With extensive preprocessing, including one-hot encoding for day and month, binary encoding for the rain column, outlier removal, and log transformation of the area, linear regression demonstrated improved performance. The MSE decreased to 1.89, with a corresponding increase in the R2Score to 0.007.
+
+\item \textbf{XGBoost Regressor}: Despite preprocessing, the XGBoost regressor's performance remained suboptimal, with an MSE of 2.04 and a negative R2Score of -0.073.
+
+\item \textbf{CatBoost Regressor}: Similar to linear regression, CatBoost showed enhanced performance post-preprocessing, with an MSE of 1.89 and a marginally improved R2Score of 0.005.
+
+\item \textbf{LightGBM Regressor}: While LightGBM demonstrated improved performance compared to XGBoost, its MSE of 1.98 and negative R2Score of -0.040 suggested room for further optimization.
+
+\item \textbf{Random Forest}: The random forest model, after preprocessing, exhibited improved performance with an MSE of 1.98 and a negative R2Score of -0.040.
+
+\item \textbf{Decision Tree}: With preprocessing, the decision tree model's MSE decreased to 2.92, accompanied by a negative R2Score of -0.537.
+
+\item \textbf{Extra Tree}: Preprocessing enhanced the extra tree regressor's performance, with an MSE of 1.89 and a positive R2Score of 0.007.
 \end{itemize} 
 
+\clearpage
+\section{Feature Selection and Preprocessing}
+Before model training, several preprocessing steps were undertaken to optimize feature selection and enhance model interpretability. In figure 4 Positive values indicate positive correlation, while negative values indicate negative correlation. Among the features, temperature (temp) shows the strongest positive correlation with the target variable, while relative humidity (RH) demonstrates the weakest correlation.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.5]{figures/Correlation Matrix.jpg}
+    \caption{Figure 2: Correlation Matrix: This matrix displays the correlation coefficients between variables, including spatial coordinates, meteorological factors, and the target variable (forest fire volume). }
+    \label{fig:example-01}
+\end{figure}
+
+\clearpage
+\textbf{One-Hot Encoding}: Categorical variables such as day and month were transformed into numerical form through one-hot encoding, enabling their integration into the regression models
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.8]{figures/Monthly Distribution of Forest fire.jpg}
+    \caption{Figure 3: Monthly distribution of forest fire volume in the study area, Alto Minho.The image illustrates the volume of forest fires recorded in each month, highlighting August and September as peak months
+}
+    \label{fig:example-01}
+\end{figure}
+
+\textbf{Binary Encoding}: Binary encoding was applied to the rain column, simplifying its representation and facilitating its inclusion in the regression models.
+
+\textbf{Outlier Removal}: Data points that deviated significantly from the dataset's distribution were identified as shown in figure 6 and removed to prevent them from skewing model predictions.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.9]{figures/Outlier Records.jpg}
+    \caption{Table 3: Outlier Records :Representative outliers displaying spatial coordinates, month, day, meteorological indices, and target variable values from the dataset}
+    \label{fig:example-02}
+\end{figure}
+
+\textbf{Log Transformation}: The target variable, area, underwent log transformation to achieve a more symmetric distribution and stabilize variance, a common practice in linear regression problems.
 
 
+\chapter{Discussion and Analysis}
+\section{Significance of the Findings}
+The results from the regression models show that using machine learning is really helpful for predicting forest fires. Even though it's a tough problem, these models can make good predictions when we get the data ready properly. By looking at past weather, geography, and fire data, these models can find patterns that help predict fires. This helps us get ready for fires and manage them better.
+
+\section{Performance Analysis}
+Among the models we looked at, CatBoost did the best at predicting fires. It's really good at handling different types of data and finding tricky patterns. XGBoost and LightGBM also did well, but CatBoost was a bit better. These models are good at handling lots of data and figuring out what's important for predicting fires
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.8]{figures/Comprehensive overview of various model configurations.jpg}
+    \caption{Table 4: This table presents a comprehensive overview of various model configurations, including hyperparameters and corresponding evaluation metrics.}
+    \label{fig:example-02}
+\end{figure}
+
+Additionally, an extra feature was integrated into the project to predict fire severity into three categories: mild, moderate, and severe. This enhancement offers more nuanced insights into the potential severity of forest fires, enabling better preparation and management strategies. By incorporating this additional feature, the models can anticipate the intensity of fire outbreaks more accurately and assist in effective resource allocation and mitigation efforts.
+
+\section{Limitations and Implications}
+
+However, it's essential to acknowledge several limitations inherent in the analysis. The performance of the models is heavily reliant on the quality and representativeness of the dataset. Inadequate or biased data can lead to erroneous conclusions and hinder the generalizability of the models. Moreover, the choice of hyperparameters and preprocessing techniques can significantly impact model performance, highlighting the importance of thorough experimentation and tuning.
+
+Additionally, the scarcity of certain data points within the dataset poses challenges for model training and evaluation. Variables with limited observations or missing values may not adequately represent the underlying distribution of data, potentially leading to biased predictions. Addressing these data deficiencies requires innovative approaches such as data imputation techniques or the integration of supplementary data sources.
 
 
 \section{Summary}
-Write a summary of this chapter.
 
-
-
+In summary, the findings from the regression models demonstrate the potential of machine learning in forest fire prediction. By optimizing model performance and addressing data limitations, we can enhance the reliability and robustness of predictive models for effective forest fire management. Ongoing research efforts are crucial for advancing our understanding of forest fire dynamics and improving prediction accuracy in real-world scenarios.
