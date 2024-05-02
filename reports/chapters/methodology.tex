@@ -41,15 +41,6 @@ CatBoost is a gradient boosting library developed by Yandex that is designed to 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Tables}
-Data types of each column in the DataFrame df \\
-\begin{table}[ht!]
-    \centering
-    \input{chapters/Table/Datatypes}
-    \label{tab:Datatypes}
-    \caption{Data types of each column in the DataFrame df}
-\end{table}
-
 \clearpage
 \section{Code}
 Code snippet in LATEX and this is a Python code example
@@ -105,8 +96,8 @@ plt.ylabel('Average Target')
 plt.show()
 \end{lstlisting}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 First 10 rows of Data frame
 \begin{table}[ht!]
@@ -120,7 +111,7 @@ First 10 rows of Data frame
 \section{Figure}
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=1.0]{figures/output_14_0.png}
+    \includegraphics[scale=0.9]{figures/output_14_0.png}
     \caption{Histogram representation of Target column and Frequency.}
 \end{figure}
 
@@ -164,7 +155,7 @@ The importance of features in predicting the target variable (area or skewed are
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.5]{figures/Feature Ranking.jpg}
+    \includegraphics[scale=0.4]{figures/Feature Ranking.jpg}
     \caption{Feature Importance Ranking : This diagram illustrates the ranking of feature importance from most important to least important. The top five features, in descending order of importance, are temperature (temp), spatial coordinate X, DC index, ISI index, and FFMC index.}
 \end{figure}
 
@@ -173,6 +164,5 @@ The performance of the models using only the top 5 dependable columns versus usi
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section {Summary}
 In this methodology, we described the algorithms employed in our study, including traditional regression algorithms and gradient boosting algorithms. These algorithms were implemented using Python, and experiments were conducted on a dataset from Portugal to predict forest fire occurrences. The models were trained and evaluated using appropriate techniques, and the results were analyzed to provide insights into the effectiveness of the prediction methodologies. Additionally, feature importance analysis was performed to identify the most significant predictors of forest fire area. Comparison between top 5 dependable columns and all columns is conducted to understand the impact of feature selection on model performance.
